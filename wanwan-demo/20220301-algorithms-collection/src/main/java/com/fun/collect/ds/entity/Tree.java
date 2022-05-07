@@ -1,4 +1,4 @@
-package com.fun.collect.build.entity;
+package com.fun.collect.ds.entity;
 
 import lombok.Data;
 

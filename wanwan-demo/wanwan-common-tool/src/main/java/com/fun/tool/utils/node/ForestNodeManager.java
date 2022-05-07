@@ -1,4 +1,4 @@
-package com.fun.tool.node;
+package com.fun.tool.utils.node;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;

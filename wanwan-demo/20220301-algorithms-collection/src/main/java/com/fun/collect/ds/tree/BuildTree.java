@@ -1,6 +1,6 @@
-package com.fun.collect.build;
+package com.fun.collect.ds.tree;
 
-import com.fun.collect.build.entity.Tree;
+import com.fun.collect.ds.entity.Tree;
 
 import java.util.ArrayList;
 import java.util.HashMap;

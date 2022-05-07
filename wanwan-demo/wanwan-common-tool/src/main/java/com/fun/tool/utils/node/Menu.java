@@ -14,76 +14,86 @@
  *  this software without specific prior written permission.
  *  Author: Chill 庄骞 (smallchill@163.com)
  */
-package com.fun.tool.node;
+package com.fun.tool.utils.node;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
 /**
- * 视图实体类
+ * 实体类
  *
  * @author Chill
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class MenuVO extends Menu implements INode<MenuVO> {
+@EqualsAndHashCode
+public class Menu implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
-	public MenuVO(Long id, Long parentId) {
-		super();
-		this.id = id;
-		this.parentId = parentId;
-	}
-
 	/**
-	 * 主键ID
+	 * 主键
 	 */
 	private Long id;
 
 	/**
-	 * 父节点ID
+	 * 菜单父主键
 	 */
 	private Long parentId;
 
 	/**
-	 * 子孙节点
+	 * 菜单编号
 	 */
-	private List<MenuVO> children;
+	private String code;
 
 	/**
-	 * 是否有子孙节点
+	 * 菜单名称
 	 */
-	private Boolean hasChildren;
-
-	@Override
-	public List<MenuVO> getChildren() {
-		if (this.children == null) {
-			this.children = new ArrayList<>();
-		}
-		return this.children;
-	}
+	private String name;
 
 	/**
-	 * 上级菜单
+	 * 菜单别名
 	 */
-	private String parentName;
+	private String alias;
+
+	/**
+	 * 请求地址
+	 */
+	private String path;
+
+	/**
+	 * 菜单资源
+	 */
+	private String source;
+
+	/**
+	 * 排序
+	 */
+	private Integer sort;
 
 	/**
 	 * 菜单类型
 	 */
-	private String categoryName;
+	private Integer category;
 
 	/**
-	 * 按钮功能
+	 * 操作按钮类型
 	 */
-	private String actionName;
+	private Integer action;
 
 	/**
-	 * 是否新窗口打开
+	 * 是否打开新页面
 	 */
-	private String isOpenName;
+	private Integer isOpen;
+
+	/**
+	 * 备注
+	 */
+	private String remark;
+
+	/**
+	 * 是否已删除
+	 */
+	private Integer isDeleted;
 }

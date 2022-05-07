@@ -1,4 +1,4 @@
-package com.fun.tool.node;
+package com.fun.tool.utils.node;
 
 import java.io.Serializable;
 import java.util.List;
