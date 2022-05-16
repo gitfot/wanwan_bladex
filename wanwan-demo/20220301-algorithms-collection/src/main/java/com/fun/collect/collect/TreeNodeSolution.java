@@ -23,8 +23,8 @@ public class TreeNodeSolution {
 	public static void preOrder(TreeNode tree) {
 		if (tree != null) {
 			System.out.println(tree.data);
-			preOrder(tree.lChild);
-			preOrder(tree.rChild);
+			preOrder(tree.left);
+			preOrder(tree.right);
 		}
 	}
 
@@ -33,9 +33,9 @@ public class TreeNodeSolution {
 	 */
 	public static void inOrder(TreeNode tree) {
 		if (tree != null) {
-			inOrder(tree.lChild);
+			inOrder(tree.left);
 			System.out.println(tree.data);
-			inOrder(tree.rChild);
+			inOrder(tree.right);
 		}
 	}
 
@@ -44,8 +44,8 @@ public class TreeNodeSolution {
 	 */
 	public static void postOrder(TreeNode tree) {
 		if (tree != null) {
-			postOrder(tree.lChild);
-			postOrder(tree.rChild);
+			postOrder(tree.left);
+			postOrder(tree.right);
 			System.out.println(tree.data);
 		}
 	}
@@ -61,10 +61,10 @@ public class TreeNodeSolution {
 			return true;
 		}
 		if (key > tree.data) {
-			return hasKey(tree.getRChild(), key);
+			return hasKey(tree.right, key);
 		}
 		else {
-			return hasKey(tree.getLChild(), key);
+			return hasKey(tree.left, key);
 		}
 	}
 
@@ -78,10 +78,10 @@ public class TreeNodeSolution {
 			return TreeNode;
 		}
 		if (key > tree.getData()) {
-			tree.setRChild(buildTree(tree.getRChild(), key));
+			tree.right = buildTree(tree.right, key);
 		}
 		else {
-			tree.setLChild(buildTree(tree.getLChild(), key));
+			tree.left = buildTree(tree.left, key);
 		}
 		return tree;
 	}
