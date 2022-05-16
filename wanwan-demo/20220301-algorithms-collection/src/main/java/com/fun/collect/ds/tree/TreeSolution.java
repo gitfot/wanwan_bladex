@@ -26,17 +26,18 @@ public class TreeSolution {
 
 
 	/**
-	 * 层序遍历反转打印（之字型）
+	 * 层序遍历1
 	 */
-	public ArrayList<ArrayList<Integer>> printReverse(TreeNode root) {
+	public static void printTree(TreeNode root) {
 		if (root == null) {
-			return null;
+			return;
 		}
 		ArrayDeque<TreeNode> queue = new ArrayDeque<>();
 		queue.add(root);
 
 		while (!queue.isEmpty()) {
 			TreeNode node = queue.pop();
+			System.out.println(node.data);
 			if (node.left != null) {
 				queue.add(node.left);
 			}
@@ -44,30 +45,54 @@ public class TreeSolution {
 				queue.add(node.right);
 			}
 		}
-		return null;
 	}
+
+	/**
+	 * 层序遍历2
+	 */
+	public static void printTree2(TreeNode root) {
+		if (root == null) {
+			return;
+		}
+		ArrayDeque<TreeNode> queue = new ArrayDeque<>();
+		queue.add(root);
+		while (!queue.isEmpty()) {
+			int size = queue.size();
+			for (int i = 0; i < size; i++) {
+				TreeNode node = queue.pop();
+				System.out.println(node.data);
+				if (node.left != null) {
+					queue.add(node.left);
+				}
+				if (node.right != null) {
+					queue.add(node.right);
+				}
+			}
+		}
+	}
+
 
 	/**
 	 * 层序遍历反转打印（之字型）
 	 */
-	public static ArrayList<ArrayList<Integer> > print(TreeNode pRoot) {
-		LinkedList<TreeNode> q = new LinkedList<>();
+	public static ArrayList<ArrayList<Integer> > printReverse(TreeNode pRoot) {
+		LinkedList<TreeNode> queue = new LinkedList<>();
 		ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+		queue.add(pRoot);
 		boolean rev = true;
-		q.add(pRoot);
-		while(!q.isEmpty()){
-			int size = q.size();
+		while(!queue.isEmpty()){
+			int size = queue.size();
 			ArrayList<Integer> list = new ArrayList<>();
 			for(int i=0; i<size; i++){
-				TreeNode node = q.poll();
+				TreeNode node = queue.poll();
 				if(node == null){continue;}
 				if(rev){
 					list.add(node.data);
 				}else{
 					list.add(0, node.data);
 				}
-				q.offer(node.left);
-				q.offer(node.right);
+				queue.offer(node.left);
+				queue.offer(node.right);
 			}
 			if(list.size()!=0){res.add(list);}
 			rev=!rev;
@@ -75,16 +100,18 @@ public class TreeSolution {
 		return res;
 	}
 
+
+
 	public static void main(String[] args) {
-		TreeNode tree = new TreeNode(20, null, null);
-		TreeNodeSolution.buildTree(tree, 21);
-		TreeNodeSolution.buildTree(tree, 10);
-		TreeNodeSolution.buildTree(tree, 36);
-		TreeNodeSolution.buildTree(tree, 40);
-		TreeNodeSolution.buildTree(tree, 18);
-		//System.out.println(JSONUtil.toJsonStr(tree));
-		//System.out.println(maxDepth(tree));
-		print(tree);
+		TreeNode tree = new TreeNode(1, null, null);
+		TreeNodeSolution.buildTree(tree, 2);
+		TreeNodeSolution.buildTree(tree, 3);
+		TreeNodeSolution.buildTree(tree, 4);
+		TreeNodeSolution.buildTree(tree, 5);
+//		System.out.println(JSONUtil.toJsonStr(tree));
+//		System.out.println(maxDepth(tree));
+//		printTree(tree);
+//		printTree2(tree);
 
 	}
 
