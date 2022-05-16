@@ -151,10 +151,11 @@ public class LinkListSolution {
 		if (pHead == null) {
 			return null;
 		}
+		//创建包含头结点的链表
 		ListNode<Integer> newHead = new ListNode<>(0, pHead);
 		ListNode<Integer> cur = newHead;
 
-		HashMap<Integer,Integer> map = new HashMap<>();
+		HashMap<Integer,Integer> map = new HashMap<>(10);
 		//计数
 		while (pHead != null) {
 			if (map.containsKey(pHead.data)) {
@@ -165,10 +166,16 @@ public class LinkListSolution {
 			}
 			pHead = pHead.next;
 		}
-		while (cur != null) {
+		//对比删除
+		while (cur.next != null) {
+			ListNode<Integer> tmp = cur.next;
 			if (map.get(cur.next.data) > 1) {
-				cur.next = cur.next.next;
-				cur = cur.next.next;
+				//0 1 1 1 2 3 3  ->> 0 2 3 3 ->> 0 2 5
+				Integer count = map.get(cur.next.data);
+				for (int i = 0; i < count; i++) {
+					tmp = tmp.next;
+				}
+				cur.next = tmp;
 			}
 			else {
 				cur = cur.next;
