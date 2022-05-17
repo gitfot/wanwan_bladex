@@ -191,6 +191,25 @@ public class TreeSolution {
 		return node;
 	}
 
+	/**
+	 * 求两个节点的最近公共节点
+	 */
+	public static TreeNode lowestCommonAncestor (TreeNode root, int n1, int n2) {
+		//匹配当前节点
+		if (root == null || root.data == n1 || root.data == n2) {
+			return root;
+		}
+		TreeNode left = lowestCommonAncestor(root.left, n1, n2);
+		TreeNode right = lowestCommonAncestor(root.right, n1, n2);
+		if (left == null) {
+			return right;
+		}
+		if (right == null) {
+			return left;
+		}
+		return root;
+	}
+
 
 	public static void main(String[] args) {
 		TreeNode tree = new TreeNode(10, null, null);
@@ -207,7 +226,10 @@ public class TreeSolution {
 //		System.out.println(hasPathSumWithDfs(tree, 15));
 //		findPathSumWithDfs(tree, 22);
 //		System.out.println(res);
-		System.out.println(serialize(tree));
+//		System.out.println(serialize(tree));
+//		TreeNode deserialize = deserialize("10,5,4,#,#,7,#,#,12,#,#");
+//		System.out.println(JSONUtil.toJsonStr(deserialize));
+		lowestCommonAncestor(tree, 4, 12);
 	}
 
 }
