@@ -210,6 +210,23 @@ public class TreeSolution {
 		return root;
 	}
 
+	/**
+	 * 求滑动窗口的最大值
+	 */
+	public ArrayList<Integer> maxInWindows(int [] num, int size) {
+		ArrayList<List<Integer>> winList = new ArrayList<>();
+		for (int i = 0; i < num.length; i+=3) { // 3 2 1 [4] 5
+			List<Integer> group = new ArrayList<>();
+			for (int j = i; j < size; j++) {
+				group.add(num[j]);
+			}
+			winList.add(group);
+		}
+
+
+		return null;
+	}
+
 
 	public static void main(String[] args) {
 		TreeNode tree = new TreeNode(10, null, null);
