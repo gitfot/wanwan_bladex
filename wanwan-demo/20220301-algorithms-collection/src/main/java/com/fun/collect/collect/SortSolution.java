@@ -14,12 +14,25 @@ public class SortSolution {
 //		shellSort(a);
 //		quickSort(a, 0, a.length-1);
 		System.out.println(Arrays.toString(a));
+	}
 
-
+	/**
+	 * 简单选择排序
+	 * 时间复杂度为o(n2)，但性能略优于冒泡排序
+	 */
+	public static void minSort(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i + 1; j < arr.length; j++) {
+				if (arr[j] < arr[i]) {
+					swap(arr, i, j);
+				}
+			}
+		}
 	}
 
 	/**
 	 * 简单插入排序
+	 * 时间复杂度为o(n2)。相对于随机数据，插入排序比冒泡快一倍，比选择排序略快。
 	 */
 	public static void insertSort(int[] arr) {
 		for (int i = 1; i < arr.length; i++) {
@@ -31,6 +44,7 @@ public class SortSolution {
 
 	/**
 	 * 希尔排序 针对有序序列在插入时采用交换法
+	 * 时间复杂度O(Nlog2N)，第一个突破O(n^2)的排序算法；是简单插入排序的改进版；
 	 */
 	public static void shellSort(int []arr){
 		//增量gap，并逐步缩小增量

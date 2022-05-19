@@ -1,9 +1,7 @@
 package com.fun.collect.ds.tree;
 
 
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author wanwan 2022/5/18
@@ -81,10 +79,27 @@ public class Queue_StackSolution {
 		return res.toString();
 	}
 
+	/**
+	 * 求滑动窗口的最大值：暴力法
+	 */
+	public static ArrayList<Integer> maxInWindows(int [] num, int size) {
+		ArrayList<Integer> res = new ArrayList<>();
+		for (int i = 0; i+size <= num.length; i++) {
+			int maxNum = 0;
+			for (int j = i; j < size + i && j < num.length; j++) {
+				maxNum = Math.max(maxNum, num[j]);
+			}
+			res.add(maxNum);
+		}
+		return res;
+	}
+
 	public static void main(String[] args) {
 //		boolean popOrder = isPopOrder(new int[]{1, 2, 3, 4, 5}, new int[]{4, 5, 3, 2, 1});
 //		System.out.println(popOrder);
-		System.out.println(reverseSentence("coder? a you are"));
+//		System.out.println(reverseSentence("coder? a you are"));
+//		ArrayList<Integer> list = maxInWindows(new int[]{1, 2, 3, 4, 5}, 2);
+//		System.out.println(list);
 
 	}
 }
