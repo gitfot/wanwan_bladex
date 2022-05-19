@@ -192,7 +192,7 @@ public class TreeSolution {
 	}
 
 	/**
-	 * 求两个节点的最近公共节点
+	 * 二叉树求两个节点的最近公共节点
 	 */
 	public static TreeNode lowestCommonAncestor (TreeNode root, int n1, int n2) {
 		//匹配当前节点
@@ -206,6 +206,23 @@ public class TreeSolution {
 		}
 		if (right == null) {
 			return left;
+		}
+		return root;
+	}
+
+	/**
+	 * 二叉树"搜索树"求两个节点的最近公共节点
+	 * 		利用了搜索二叉树排序的特性
+	 */
+	public static TreeNode commonAncestor (TreeNode root, int n1, int n2) {
+		if (root == null || root.data == n1 || root.data == n2) {
+			return root;
+		}
+		if (n1 > root.data && n2 > root.data) {
+			return commonAncestor(root.right, n1, n2);
+		}
+		if (n1 < root.data && n2 < root.data) {
+			return commonAncestor(root.left, n1, n2);
 		}
 		return root;
 	}
