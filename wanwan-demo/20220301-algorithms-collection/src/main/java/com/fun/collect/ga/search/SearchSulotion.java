@@ -1,6 +1,11 @@
 package com.fun.collect.ga.search;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author wanwan 2022/5/19
@@ -81,14 +86,31 @@ public class SearchSulotion {
 	/**
 	 * 求字符串内的字符有多少种组合
 	 */
-	public ArrayList<String> permutation(String str) {
-		String[] split = str.split("");
-		for (int i = 0; i < split.length; i++) {
-			for (int j = i; j < split.length; j++) {
-
-			}
+	public static ArrayList<String> permutation(String str) {
+		if (str.isEmpty()) {
+			return new ArrayList<>();
 		}
-		return null;
+		HashSet<String> res = new HashSet<>();
+		perm(0, str, res);
+		return new ArrayList<>(res);
+	}
+	public static void perm(int pos, String str, Set<String> set) {
+		if (pos + 1 == str.length()) {
+			set.add(str);
+			return;
+		}
+		for (int i = pos; i < str.length(); i++) {
+			str = swap(str, pos, i);
+			perm(pos + 1, str, set);
+			str = swap(str, pos, i);
+		}
+	}
+	public static String swap(String str, int i, int j) {
+		String[] split = str.split("");
+		String tmp = split[i];
+		split[i] = split[j];
+		split[j] = tmp;
+		return StringUtils.join(split);
 	}
 
 	public static void main(String[] args) {
@@ -98,6 +120,6 @@ public class SearchSulotion {
 //		int[] a2 = new int[] {6,7,1,2,3,4,5};
 //		System.out.println(minNumberInRotateArray(a1));
 //		System.out.println(minNumberInRotateArray(a2));
-
+//		System.out.println(permutation("ABC"));
 	}
 }
