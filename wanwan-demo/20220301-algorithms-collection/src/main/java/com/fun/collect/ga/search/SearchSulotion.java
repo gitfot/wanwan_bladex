@@ -1,5 +1,7 @@
 package com.fun.collect.ga.search;
 
+import java.util.ArrayList;
+
 /**
  * @author wanwan 2022/5/19
  */
@@ -53,9 +55,49 @@ public class SearchSulotion {
 		return false;
 	}
 
+	/**
+	 * 求翻转数组的最小值
+	 */
+	public static int minNumberInRotateArray(int [] arr) {
+		int left = 0, right = arr.length -1;
+		int mid = -1;
+		while (left <= right) {
+			mid = (left + right) / 2;
+			// m 在右排序数组中，旋转点在 [left, m]中
+			if (arr[mid] < arr[right]) {
+				right = mid;
+			}
+			// m在左排序数组中，旋转点在 [m+1, right] 中
+			else if (arr[mid] > arr[right]) {
+				left = mid + 1;
+			}
+			else {
+				return mid;
+			}
+		}
+		return mid;
+	}
+
+	/**
+	 * 求字符串内的字符有多少种组合
+	 */
+	public ArrayList<String> permutation(String str) {
+		String[] split = str.split("");
+		for (int i = 0; i < split.length; i++) {
+			for (int j = i; j < split.length; j++) {
+
+			}
+		}
+		return null;
+	}
+
 	public static void main(String[] args) {
-		int[][] arr = new int[][] {{7,11,15},{8,12,19},{9,16,22}};
+//		int[][] arr = new int[][] {{7,11,15},{8,12,19},{9,16,22}};
 //		System.out.println(findIn2dArray(arr, 9));
+//		int[] a1 = new int[] {3,4,5,6,7,1,2};
+//		int[] a2 = new int[] {6,7,1,2,3,4,5};
+//		System.out.println(minNumberInRotateArray(a1));
+//		System.out.println(minNumberInRotateArray(a2));
 
 	}
 }
