@@ -18,9 +18,10 @@ public class MyTest {
 	@Test
 	public void test1() {
 
-		String joi1 = StringUtils.join(Lists.newArrayList(1, 2, 3),",");
-		String joi2 = StringUtils.join(Lists.newArrayList("1", "2", "3"),",");
-		System.out.println(joi1);
-		System.out.println(joi2);
+//		String joi1 = StringUtils.join(Lists.newArrayList(1, 2, 3),",");
+//		String joi2 = StringUtils.join(Lists.newArrayList("1", "2", "3"),",");
+//		System.out.println(joi1);
+//		System.out.println(joi2);
+		System.out.println("1234".substring(0, 2));
 	}
 }

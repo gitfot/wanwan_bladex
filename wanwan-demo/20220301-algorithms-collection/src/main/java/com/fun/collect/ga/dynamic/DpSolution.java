@@ -179,6 +179,26 @@ public class DpSolution {
 		return max;
 	}
 
+	/**
+	 * 把数字翻译成字符串
+	 */
+	public static int decodeNumString (String nums) {
+		// write code here
+		int[] dp = new int[nums.length() + 1];
+		dp[0] = dp[1] = 1;
+		for (int i = 2; i <= nums.length(); i++) {
+			//获取两位字符
+			String sub = nums.substring(i - 2, i);
+			if (sub.compareTo("10") > 0 &&sub.compareTo("26") < 0) {
+				dp[i] = dp[i-1] + dp[i-2];
+			}
+			else {
+				dp[i] = dp[i-1];
+			}
+		}
+		return dp[nums.length() -1];
+	}
+
 
 	public static void main(String[] args) {
 //		System.out.println(findGreatestSumOfSubArray(new int[]{1,-2,3,10,-4,7,2,-5}));
@@ -187,6 +207,7 @@ public class DpSolution {
 //		System.out.println(maxProfit(new int[]{8,9,2,5,4,7,1}));
 //		int[][] arr = new int[][]{{1,3,1},{1,5,1},{4,2,1}};
 //		System.out.println(gridMaxValue(arr));
-		System.out.println(lengthOfLongestSubstring2("abcabbe"));
+//		System.out.println(lengthOfLongestSubstring2("abcabbe"));
+		System.out.println(decodeNumString("12258"));
 	}
 }
