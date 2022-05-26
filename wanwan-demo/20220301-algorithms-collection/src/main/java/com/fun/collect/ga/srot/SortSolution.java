@@ -21,17 +21,5 @@ public class SortSolution {
 		return arr;
 	}
 
-	/**
-	 * 找出数组中的重复数字
-	 */
-	public int findRepeatNumber(int[] nums) {
 
-	}
-
-	/**
-	 * 统计数组中的逆序对
-	 */
-	public int reversePairs(int[] nums) {
-
-	}
 }
