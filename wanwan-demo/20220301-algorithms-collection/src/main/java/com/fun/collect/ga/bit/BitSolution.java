@@ -1,4 +1,4 @@
-package com.fun.collect.bit;
+package com.fun.collect.ga.bit;
 
 /**
  * @author wanwan 2022/5/28
