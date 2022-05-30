@@ -48,9 +48,45 @@ public class Solution {
 		return res;
 	}
 
+	/**
+	 * 数组中出现次数超过一半的数字（数字）
+	 */
 	public static int majorityElement(int[] nums) {
-
+		int x = 0, votes = 0;
+		for (int num : nums) {
+			if (votes == 0) {
+				x = num;
+			}
+			votes += num == x ? 1 : -1;
+		}
+		return x;
 	}
+
+	/**
+	 * 整数中1出现的次数
+	 */
+	public static int countDigitOne(int n) {
+		// digit表示位因子，比如2304十位上的位因子为10
+		int digit = 1, res = 0;
+		int high = n / 10, cur = n % 10, low = 0;
+		while (high != 0 || cur !=0) {
+			if (cur == 0) {
+				res += high * digit;
+			}
+			else if (cur == 1) {
+				res += high * digit + low +1;
+			}
+			else {
+				res += high * digit + digit;
+			}
+			low += cur * digit;
+			high /= 10;
+			cur = high % 10;
+			digit *= 10;
+		}
+		return res;
+	}
+
 
 
 	public static void main(String[] args) {
