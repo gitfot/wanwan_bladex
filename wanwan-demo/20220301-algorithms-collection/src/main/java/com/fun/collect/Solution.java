@@ -87,12 +87,50 @@ public class Solution {
 		return res;
 	}
 
+	/**
+	 * 1 把数组排成最小的数
+	 * 快速排序
+	 */
+	public static String minNumber(int[] nums) {
+		quickSort(nums, 0, nums.length-1);
+		return Arrays.toString(nums);
+	}
+
+	/**
+	 * 1.1 快排
+	 */
+	public static void quickSort(int[] nums,int left, int right) {
+		if (left > right) {
+			return ;
+		}
+		int i = left, j = right;
+		while (i < j) {
+			while (j > i && compare(nums[j],nums[left]) >= 0) {
+				j --;
+			}
+			while (i < j && compare(nums[i], nums[left])<= 0) {
+				i ++;
+			}
+			swap(nums, i,j);
+		}
+		swap(nums, left, i);
+		quickSort(nums, left, i -1);
+		quickSort(nums, i +1, right);
+	}
+	/**
+	 * 1.2 比较字符化的数字大小
+	 */
+	public static int compare(int a, int b) { //30 3
+		String s1 = String.valueOf(a);
+		String s2 = String.valueOf(b);
+		return Integer.compare(Integer.parseInt(s1 + s2), Integer.parseInt(s2 + s1));
+	}
 
 
 	public static void main(String[] args) {
 //		System.out.println(Arrays.toString(exchange(new int[]{1,2,3,4,5,6})));
 //		System.out.println(Arrays.toString(constructArr(new int[]{1,2,3,4,5})));
-		System.out.println(majorityElement(new int[]{1,3,4,5,2,2}));
-
+//		System.out.println(majorityElement(new int[]{1,3,4,5,2,2}));
+		System.out.println(minNumber(new int[]{59,34,23,3,30,34}));
 	}
 }
