@@ -1,6 +1,8 @@
 package com.fun.collect;
 
-import java.util.Arrays;
+import cn.hutool.json.JSONUtil;
+
+import java.util.*;
 
 /**
  * @author wanwan 2022/5/28
@@ -126,11 +128,86 @@ public class Solution {
 		return Integer.compare(Integer.parseInt(s1 + s2), Integer.parseInt(s2 + s1));
 	}
 
+	/**
+	 * 和为s的连续正数序列
+	 */
+	public static int[][] findContinuousSequence(int target) {
+		List<int[]> res = new ArrayList<>();
+		//滑动窗口的左右边界
+		int i = 1, j = 1, sum = 1;
+		//窗口右边界到目标长度一半的时候就结束了
+		// 比如n=9, 则n/2=4, (n/2)+1=5，所以==>> n/2 + (n/2)+1 >= n
+		while (i <= target / 2) {
+			if (sum > target) {
+				sum-=i;
+				i++;
+			}
+			else if (sum < target) {
+				j++;
+				sum +=j;
+			}
+			else {
+				int[] tmp = new int[j-i+1];
+				for (int k = i; k <= j; k++) {
+					tmp[k-i] = k;
+				}
+				res.add(tmp);
+				//继续向右滑动找下一组
+				j++;
+				sum +=j;
+			}
+		}
+		return res.toArray(new int[res.size()][]);
+	}
+
+	/**
+	 * 和为s的两个数字
+	 */
+	public static int[] twoSum(int[] nums, int target) {
+		int i = 0, j = nums.length-1;
+		int[] res = new int[2];
+		while (i <= j) {
+			if (nums[i] + nums[j] < target) {
+				i++;
+			}
+			else if (nums[i] + nums[j] > target) {
+				j--;
+			}
+			else {
+				return new int[] {nums[i],nums[j]};
+			}
+		}
+		return res;
+	}
+
+	/**
+	 * 旋转字符串
+	 * 解法1：字符串切片
+	 * 执行用时：0 ms 消耗41M
+	 */
+	public static String reverseLeftWords(String s, int n) {
+		return s.substring(n) + s.substring(0,n);
+	}
+
+	/**
+	 * 圆圈中剩下的最后数字
+	 */
+	public int lastRemaining(int n, int m) {
+
+		for (int i = 0; i < n; i++) {
+
+		}
+
+		return -1;
+	}
 
 	public static void main(String[] args) {
 //		System.out.println(Arrays.toString(exchange(new int[]{1,2,3,4,5,6})));
 //		System.out.println(Arrays.toString(constructArr(new int[]{1,2,3,4,5})));
 //		System.out.println(majorityElement(new int[]{1,3,4,5,2,2}));
-		System.out.println(minNumber(new int[]{59,34,23,3,30,34}));
+//		System.out.println(minNumber(new int[]{59,34,23,3,30,34}));
+//		System.out.println(JSONUtil.toJsonStr((findContinuousSequence(9))));
+//		System.out.println(Arrays.toString(twoSum(new int[]{2,7,11,15},9)));
+		System.out.println(reverseLeftWords("abcdefg", 2));
 	}
 }
