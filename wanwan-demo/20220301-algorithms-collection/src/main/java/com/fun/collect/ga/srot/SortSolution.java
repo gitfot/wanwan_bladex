@@ -97,10 +97,32 @@ public class SortSolution {
 		quickSort(arr, i+1, r);
 	}
 
+	/**
+	 * 计算第 n 丑数
+	 * 丑数的性质：丑数只包含因子 2, 3, 5
+	 */
+	public static int nthUglyNumber(int n) {
+		// 数组dp[i] 表示第i个丑数
+		int[] dp = new int[n+1];
+		dp[1] = 1;
+		// n2、n3、n5为下一组丑数，p则为对应的丑数因子
+		int p2 = 1, p3 = 1, p5 = 1;
+		for (int i = 2; i <= n; i++) {
+			int n2 = p2 * 2, n3 = p3 * 3, n5 = p5 * 5;
+			dp[i] = Math.min(Math.min(n2, n3), n5);
+			//更新指针 指向下一个丑数
+			if (dp[i] == n2) p2 ++;
+			if (dp[i] == n3) p3 ++;
+			if (dp[i] == n5) p5 ++;
+		}
+		return dp[n];
+	}
+
 	public static void main(String[] args) {
 //		System.out.println(Arrays.toString(shellSort(new int[]{7,5,6,4})));
 //		int[] arr = new int[]{2,4,0,1,3,5}; quickSort(arr, 0, 5);
 //		System.out.println(Arrays.toString(arr));
+		System.out.println(nthUglyNumber(10));
 	}
 
 	/**
