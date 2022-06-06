@@ -192,22 +192,84 @@ public class Solution {
 	/**
 	 * 圆圈中剩下的最后数字
 	 */
-	public int lastRemaining(int n, int m) {
-
-		for (int i = 0; i < n; i++) {
-
+	public static int lastRemaining(int n, int m) {
+		return recursionOfLastRemaining(5, 3);
+	}
+	public static int recursionOfLastRemaining(int n, int m) {
+		if (n == 0) {
+			return 0;
 		}
+		return (recursionOfLastRemaining(n-1, m) + m ) % n;
+	}
 
-		return -1;
+	/**
+	 * 剪绳子 1
+	 * 方法：数学推导
+	 */
+	public static int cuttingRope(int n) {
+		int a = n / 3, b = n % 3;
+		if (n <= 3) {
+			return n - 1;
+		}
+		else if (b == 0) {
+			return (int) Math.pow(3, a);
+		}
+		// 题目要求剪的绳子长度>1，所以要将 a拆一个和b 组成 2+2的段
+		else if (b == 1) {
+			return (int) (Math.pow(3, a-1) * 4);
+		}
+		else if (b == 2) {
+			return (int) (Math.pow(3, a) * 2);
+		}
+		return 0;
+	}
+
+	/**
+	 * 打印从1到最大的n位数
+	 */
+	public static int[] printNumbers(int n) {
+		int end = (int) Math.pow(10, n) -1;
+		int[] res = new int[end +1];
+		for (int i = 1; i <= end; i++) {
+			res[i] = i;
+		}
+		return res;
+	}
+
+	/**
+	 * 打印从1到最大的n位数
+	 * 解决大数打印问题
+	 */
+	char[] nums , loop = {'0','1','2','3','4','5','6','7','8','9'};
+	StringBuilder res = new StringBuilder();
+	public String printNumbers2(int n) {
+		nums = new char[n];
+		dfsOfPrintNumbers(0, n);
+		res.deleteCharAt(res.length()-1);
+		return res.toString();
+	}
+	void dfsOfPrintNumbers(int x, int n) {
+		if (x == n) {
+			res.append(String.valueOf(nums)).append(",");
+			return;
+		}
+		for (char c : loop) {
+			nums[x] =c;
+			dfsOfPrintNumbers(x+1, n);
+		}
 	}
 
 	public static void main(String[] args) {
+
 //		System.out.println(Arrays.toString(exchange(new int[]{1,2,3,4,5,6})));
 //		System.out.println(Arrays.toString(constructArr(new int[]{1,2,3,4,5})));
 //		System.out.println(majorityElement(new int[]{1,3,4,5,2,2}));
 //		System.out.println(minNumber(new int[]{59,34,23,3,30,34}));
 //		System.out.println(JSONUtil.toJsonStr((findContinuousSequence(9))));
 //		System.out.println(Arrays.toString(twoSum(new int[]{2,7,11,15},9)));
-		System.out.println(reverseLeftWords("abcdefg", 2));
+//		System.out.println(reverseLeftWords("abcdefg", 2));
+//		System.out.println(lastRemaining(5,3));
+//		System.out.println(Arrays.toString(printNumbers(1)));
+		System.out.println(new Solution().printNumbers2(2));
 	}
 }
