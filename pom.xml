@@ -16,8 +16,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <spring.boot.version>2.4.2</spring.boot.version>
-        <spring.cloud.version>2020.0.1</spring.cloud.version>
+        <spring.security.version>1.0.11.RELEASE</spring.security.version>
+
+        <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
+        <spring.cloud.version>Hoxton.SR12</spring.cloud.version>
+        <spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
+        <spring.cloud.security.version>2.2.4.RELEASE</spring.cloud.security.version>
+        <spring.cloud.netflix-hystrix.version>2.2.4.RELEASE</spring.cloud.netflix-hystrix.version>
         <spring.platform.version>Cairo-SR8</spring.platform.version>
 
         <!-- 推荐使用Harbor -->
@@ -67,6 +72,28 @@
                 <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-security</artifactId>
+                <version>${spring.cloud.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${spring.cloud.netflix-hystrix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${spring.security.version}</version>
             </dependency>
            <!-- <dependency>
                 <groupId>io.spring.platform</groupId>

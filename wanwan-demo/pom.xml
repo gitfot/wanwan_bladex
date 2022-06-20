@@ -28,7 +28,6 @@
         <module>20220301-algorithms-collection</module>
         <module>20210924-auth2-parent</module>
         <module>20210729-httpclient-exampel</module>
-        <module>20220331-shardingsphere-example</module>
         <module>20220618-design-pattern</module>
     </modules>
 

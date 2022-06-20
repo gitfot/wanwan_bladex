@@ -22,7 +22,6 @@
         <module>zhisuan-report</module>
         <module>zhisuan-resource</module>
         <module>zhisuan-swagger</module>
-        <module>zhisuan-turbine</module>
         <module>zhisuan-xxljob</module>
         <module>zhisuan-xxljob-admin</module>
     </modules>

@@ -11,18 +11,11 @@
 
     <artifactId>auth-server-example</artifactId>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <auth2.version>2.2.4.RELEASE</auth2.version>
-    </properties>
-
     <dependencies>
         <!-- 实现对 Spring Security OAuth2 的自动配置 -->
         <dependency>
             <groupId>org.springframework.security.oauth.boot</groupId>
             <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-            <version>${auth2.version}</version>
         </dependency>
         <!--模板引擎-->
         <dependency>
@@ -47,11 +40,19 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.fun</groupId>
-            <artifactId>wanwan-common-tool</artifactId>
-            <version>2.9.1.RELEASE</version>
-        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

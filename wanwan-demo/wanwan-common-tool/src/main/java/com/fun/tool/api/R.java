@@ -21,8 +21,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.springblade.core.tool.constant.BladeConstant;
-import org.springframework.lang.Nullable;
-
+import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletResponse;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -40,9 +39,9 @@ import java.util.Optional;
 @NoArgsConstructor
 public class R<T> implements Serializable {
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 
-	}
+	}*/
 
 	private static final long serialVersionUID = 1L;
 

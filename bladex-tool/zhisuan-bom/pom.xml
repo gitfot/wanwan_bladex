@@ -43,7 +43,7 @@
         <dameng.connector.version>8.1.2.79</dameng.connector.version>
 
         <spring.boot.admin.version>2.3.1</spring.boot.admin.version>
-        <alibaba.cloud.version>2.2.7.RELEASE</alibaba.cloud.version>
+        <alibaba.cloud.version>2021.1</alibaba.cloud.version>
         <alibaba.seata.version>1.4.2</alibaba.seata.version>
         <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
     </properties>
