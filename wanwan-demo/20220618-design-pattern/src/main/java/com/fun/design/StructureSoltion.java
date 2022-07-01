@@ -42,7 +42,6 @@ public class StructureSoltion {
 
 	@AllArgsConstructor
 	class DynamicProxy {
-
 		private Object obj;
 		public Object getInstance() {
 			return Proxy.newProxyInstance(

@@ -43,6 +43,7 @@ public class CreateSolution {
 		}
 	}
 
+	//==================单例模式====================
 	/**
 	 * 单例模式：懒汉式
 	 * 双重校验锁 + volatile防止重排
@@ -72,6 +73,7 @@ public class CreateSolution {
 	 * 静态内部类懒加载
 	 */
 	static class Singleton_04 {
+		//静态内部类的作用，实现懒加载
 		private static class SingletonHolder {
 			private static Singleton_04 instance = new Singleton_04();
 		}
