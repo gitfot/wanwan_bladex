@@ -44,7 +44,7 @@ public class CreateSolution {
 	}
 
 	/**
-	 * 单例模式
+	 * 单例模式：懒汉式
 	 * 双重校验锁 + volatile防止重排
 	 */
 	static class SingleTon {
@@ -68,7 +68,7 @@ public class CreateSolution {
 	}
 
 	/**
-	 * 单例模式
+	 * 单例模式：饿汉式
 	 * 静态内部类懒加载
 	 */
 	static class Singleton_04 {

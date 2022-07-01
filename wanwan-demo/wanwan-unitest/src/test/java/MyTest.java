@@ -7,6 +7,9 @@ import com.google.common.collect.Maps;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.*;
 
@@ -15,13 +18,9 @@ import java.util.*;
  */
 public class MyTest {
 
-	@Test
-	public void test1() {
-
-//		String joi1 = StringUtils.join(Lists.newArrayList(1, 2, 3),",");
-//		String joi2 = StringUtils.join(Lists.newArrayList("1", "2", "3"),",");
-//		System.out.println(joi1);
-//		System.out.println(joi2);
-		System.out.println("1234".substring(0, 2));
+	public void test() {
+		System.out.println("test...");
 	}
+
+
 }

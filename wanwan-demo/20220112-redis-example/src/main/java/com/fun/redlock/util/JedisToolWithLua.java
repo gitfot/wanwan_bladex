@@ -15,7 +15,7 @@ import java.util.UUID;
  * @author wanwan 2022/1/13
  */
 @Slf4j
-public class JedisTool {
+public class JedisToolWithLua {
 
 	private static final StringRedisTemplate redisTemplate = SpringUtil.getBean(StringRedisTemplate.class);
 	//private static final JedisPool jedisPool = SpringUtil.getBean(JedisPool.class);
