@@ -1,7 +1,6 @@
 package com.fun.design;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 
 import java.lang.reflect.Proxy;
 
@@ -57,7 +56,7 @@ public class StructureSoltion {
 		}
 	}
 
-	//====================适配器模式：接口适配器=======================
+	//====================适配器模式：类适配器=======================
 	/**
 	 * 原理：通过继承特性来实现适配器功能。
 	 */
@@ -100,6 +99,7 @@ public class StructureSoltion {
 	//====================适配器模式：接口适配器=======================
 	/**
 	 * 原理：借助抽象类来实现适配器功能。
+	 * 场景：当不需要全部实现接口提供的方法时，可先设计一个抽象类实现接口提供一个默认实现
 	 */
 	interface Protocols {
 		void typec();
@@ -126,67 +126,186 @@ public class StructureSoltion {
 
 
 	//====================桥接模式=======================
+	//桥接模式(Bridge Pattern)将抽象部分与它的实现部分分离，使它们都可以独立地变化。
+
 	/**
-	 * 桥接模式(Bridge Pattern)将抽象部分与它的实现部分分离，使它们都可以独立地变化。
+	 * 品牌维度
 	 */
-
-	interface Implementor {
-		void operationImpl();
+	public interface Brand {
+		void info();
 	}
-	public class ConcreteImplementorA implements Implementor {
+
+	class LenovoBrand implements Brand {
+
 		@Override
-		public void operationImpl() {
-			System.out.println("ConcreteImplementorA处理的业务逻辑...");
+		public void info() {
+			System.out.println("联想");
 		}
 	}
-	@Data
-	abstract class Abstration {
 
-		private Implementor implementor;
-
-		abstract void operation();
-	}
-	class RefinedAbstration extends Abstration {
+	class AsusBrand implements Brand {
 		@Override
-		void operation() {
-			this.getImplementor().operationImpl();
-			//do else...
+		public void info() {
+			System.out.println("华硕");
 		}
 	}
+
+	/**
+	 * 品牌和类型的“桥”
+	 */
+	public abstract class Computer {
+		protected Brand brand;
+		public Computer(Brand brand) {
+			this.brand = brand;
+		}
+
+		public void info() {
+			this.brand.info();
+		}
+	}
+
+	/**
+	 * 类型维度
+	 */
+	class Desktop extends Computer {
+		public Desktop(Brand brand) {
+			super(brand);
+		}
+
+		@Override
+		public void info() {
+			super.info();
+			System.out.println("台式电脑");
+		}
+	}
+
+	class Laptop extends Computer {
+		public Laptop(Brand brand) {
+			super(brand);
+		}
+
+		@Override
+		public void info() {
+			super.info();
+			System.out.println("笔记本电脑");
+		}
+	}
+
+
 
 	//====================装饰器模式=======================
+	//装饰模式是在不必改变原类和使用继承的情况下，动态地扩展一个对象的功能。
+	// 它是通过创建一个包装对象，也就是装饰来包裹真实的对象
+
 	/**
-	 * 装饰模式可以在不使用创造更多子类的情况下，将对象的功能加以扩展。
+	 * 原始对象接口
 	 */
-	interface Component {
-		void operation();
+	public interface ICoffee {
+		void makeCoffee();
 	}
-	class ConcreteComponent implements Component {
 
+	public class OriginalCoffee implements ICoffee {
 		@Override
-		public void operation() {
-			System.out.println("handle ...");
+		public void makeCoffee() {
+			System.out.print("原味咖啡 ");
 		}
 	}
 
+	/**
+	 * 装饰器类，用于包装基础对象
+	 */
 	@AllArgsConstructor
-	class Decorator implements Component {
-		private Component component;
+	public abstract class CoffeeDecorator implements ICoffee {
+		private final ICoffee coffee;
+
 		@Override
-		public void operation() {
-			component.operation();
+		public void makeCoffee() {
+			coffee.makeCoffee();
 		}
 	}
 
-	class ConcreteDecorator extends Decorator {
-		public ConcreteDecorator(Component component) {
-			super(component);
+	/**
+	 * 实际装饰着
+	 */
+	public class MilkDecorator extends CoffeeDecorator {
+		public MilkDecorator(ICoffee coffee) {
+			super(coffee);
 		}
-
 		@Override
-		public void operation() {
-			super.operation();
-			//do else...
+		public void makeCoffee() {
+			super.makeCoffee();
+			addMilk();
+		}
+		private void addMilk(){
+			System.out.print("加奶 ");
 		}
 	}
+	public class SugarDecorator extends CoffeeDecorator {
+		public SugarDecorator(ICoffee coffee) {
+			super(coffee);
+		}
+		@Override
+		public void makeCoffee() {
+			super.makeCoffee();
+			addSugar();
+		}
+		private void addSugar(){
+			System.out.print("加糖");
+		}
+	}
+
+
+
+
+	//====================外观模式=======================
+	//定义：提供一个高层次的接口，使得子系统更易于使用
+
+	public interface Shape {
+		void draw();
+	}
+
+	public class Rectangle implements Shape {
+
+		@Override
+		public void draw() {
+			System.out.println("Rectangle::draw()");
+		}
+	}
+
+	public class Square implements Shape {
+
+		@Override
+		public void draw() {
+			System.out.println("Square::draw()");
+		}
+	}
+
+	public class Circle implements Shape {
+
+		@Override
+		public void draw() {
+			System.out.println("Circle::draw()");
+		}
+	}
+
+	/**
+	 * 外观类
+	 */
+	@AllArgsConstructor
+	public class ShapeMaker {
+		private final Shape circle;
+		private final Shape rectangle;
+		private final Shape square;
+
+		public void drawCircle(){
+			circle.draw();
+		}
+		public void drawRectangle(){
+			rectangle.draw();
+		}
+		public void drawSquare(){
+			square.draw();
+		}
+	}
+
 }
