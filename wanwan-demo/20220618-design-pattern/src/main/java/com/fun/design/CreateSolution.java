@@ -86,47 +86,101 @@ public class CreateSolution {
 		}
 	}
 
-	//=====================建造者模式=======================
+	//=====================建造者模式（传统）=======================
+	//是将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
 
-	@Data
-	class Product {
-		private String name;
-		private String type;
+	/**
+	 * 目标对象
+	 */
+	public class Computer {
+		private String cpu;//必须
+		private String ram;//必须
+		private int usbCount;//可选
+		private String keyboard;//可选
+		private String display;//可选
 
-		public void showProduct() {
-			System.out.println("name:" + name + "\n"+ "type:" + type);
+		public Computer(String cpu, String ram) {
+			this.cpu = cpu;
+			this.ram = ram;
 		}
+
+		public void setUsbCount(int usbCount) {this.usbCount = usbCount;}
+
+		public void setKeyboard(String keyboard) {this.keyboard = keyboard;}
+
+		public void setDisplay(String display) {this.display = display;}
 	}
 
-	interface Builder {
-		void setPart(String arg1, String arg2);
-
-		Product getProduct();
+	/**
+	 * 抽象构建者
+	 */
+	public abstract class ComputerBuilder {
+		public abstract void setUsbCount();
+		public abstract void setKeyboard();
+		public abstract void setDisplay();
+		public abstract Computer getComputer();
 	}
 
-	class ConcreteBuilder implements Builder {
-		private Product product = new Product();
-
+	/**
+	 * 实际构建者：苹果电脑
+	 */
+	public class MacComputerBuilder extends ComputerBuilder {
+		private Computer computer;
+		public MacComputerBuilder(String cpu, String ram) {
+			computer = new Computer(cpu, ram);
+		}
 		@Override
-		public void setPart(String arg1, String arg2) {
-			product.setName(arg1);
-			product.setType(arg2);
+		public void setUsbCount() {
+			computer.setUsbCount(2);
 		}
-
 		@Override
-		public Product getProduct() {
-			return product;
+		public void setKeyboard() {
+			computer.setKeyboard("苹果键盘");
+		}
+		@Override
+		public void setDisplay() {
+			computer.setDisplay("苹果显示器");
+		}
+		@Override
+		public Computer getComputer() {
+			return computer;
 		}
 	}
 
-	class Director {
-		Builder builder = new ConcreteBuilder();
-		public Product getProduct() {
-			builder.setPart("123", "test");
-			return builder.getProduct();
+	/**
+	 * 实际构建者：联想电脑
+	 */
+	public class LenovoComputerBuilder extends ComputerBuilder {
+		private Computer computer;
+		public LenovoComputerBuilder(String cpu, String ram) {
+			computer=new Computer(cpu,ram);
+		}
+		@Override
+		public void setUsbCount() {
+			computer.setUsbCount(4);
+		}
+		@Override
+		public void setKeyboard() {
+			computer.setKeyboard("联想键盘");
+		}
+		@Override
+		public void setDisplay() {
+			computer.setDisplay("联想显示器");
+		}
+		@Override
+		public Computer getComputer() {
+			return computer;
 		}
 	}
 
-
-
+	/**
+	 * 导演类
+	 */
+	public class ComputerDirector {
+		public void makeComputer(ComputerBuilder builder){
+			builder.setUsbCount();
+			builder.setDisplay();
+			builder.setKeyboard();
+		}
+	}
 }
