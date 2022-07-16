@@ -58,8 +58,8 @@ public class LinkListSolution {
 	}
 
 	/**
-	 * 4、找出链表环的入口节点
-	 * 方法2：快慢指针
+	 * 4、链表中倒数最后k个结点
+	 * 快慢指针
 	 */
 	public static ListNode<?> findKthToTail(ListNode<?> pHead, int k) {
 		ListNode<?> slow = pHead;

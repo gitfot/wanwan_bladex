@@ -25,7 +25,7 @@ public class TreeSolution {
 
 
 	/**
-	 * 层序遍历1
+	 * 层序遍历
 	 */
 	public static void printTree(TreeNode root) {
 		if (root == null) {
@@ -45,31 +45,6 @@ public class TreeSolution {
 			}
 		}
 	}
-
-	/**
-	 * 层序遍历2
-	 */
-	public static void printTree2(TreeNode root) {
-		if (root == null) {
-			return;
-		}
-		ArrayDeque<TreeNode> queue = new ArrayDeque<>();
-		queue.add(root);
-		while (!queue.isEmpty()) {
-			int size = queue.size();
-			for (int i = 0; i < size; i++) {
-				TreeNode node = queue.pop();
-				System.out.println(node.data);
-				if (node.left != null) {
-					queue.add(node.left);
-				}
-				if (node.right != null) {
-					queue.add(node.right);
-				}
-			}
-		}
-	}
-
 
 	/**
 	 * 层序遍历反转打印（之字型）

@@ -1,6 +1,5 @@
 package com.fun.design;
 
-import lombok.Data;
 
 /**
  * @author wanwan 2022/6/18

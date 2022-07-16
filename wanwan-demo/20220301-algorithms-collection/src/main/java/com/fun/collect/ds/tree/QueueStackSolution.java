@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * @author wanwan 2022/5/18
  */
-public class Queue_StackSolution {
+public class QueueStackSolution {
 
 	/**
 	 * 利用两个栈来实现队列的功能
