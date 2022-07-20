@@ -1,4 +1,4 @@
-package com.fun.tool.api; /**
+package com.fun.common.api; /**
  * Copyright (c) 2018-2028, Chill Zhuang 庄骞 (smallchill@163.com).
  * <p>
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE 3.0;

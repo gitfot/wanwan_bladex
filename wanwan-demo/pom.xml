@@ -29,6 +29,8 @@
         <module>20210924-auth2-parent</module>
         <module>20210729-httpclient-exampel</module>
         <module>20220618-design-pattern</module>
+        <module>springEL-example-20220720</module>
+        <module>wanwan-web-dependency</module>
     </modules>
 
     <properties>

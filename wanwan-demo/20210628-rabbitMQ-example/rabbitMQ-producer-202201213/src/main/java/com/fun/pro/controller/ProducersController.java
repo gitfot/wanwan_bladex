@@ -2,7 +2,7 @@ package com.fun.pro.controller;
 
 import com.fun.pro.entity.Student;
 import com.fun.pro.send.Sender;
-import com.fun.tool.api.R;
+import com.fun.common.api.R;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

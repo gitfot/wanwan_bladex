@@ -1,4 +1,4 @@
-package com.fun.tool.api; /**
+package com.fun.common.api; /**
  * Copyright (c) 2018-2028, Chill Zhuang 庄骞 (smallchill@163.com).
  * <p>
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE 3.0;
@@ -14,13 +14,13 @@ package com.fun.tool.api; /**
  * limitations under the License.
  */
 
+import com.fun.common.base.consts.BladeConstant;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springblade.core.tool.constant.BladeConstant;
 import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletResponse;
 import java.io.Serializable;

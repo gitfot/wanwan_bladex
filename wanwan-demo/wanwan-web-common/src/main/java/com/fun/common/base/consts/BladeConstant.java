@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springblade.core.tool.constant;
+package com.fun.common.base.consts;
 
 /**
  * 系统常量

@@ -22,6 +22,11 @@
             <artifactId>wanwan-web-common</artifactId>
             <version>2.9.1.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.fun</groupId>
+            <artifactId>wanwan-web-dependency</artifactId>
+            <version>2.9.1.RELEASE</version>
+        </dependency>
         <!-- 实现对 Spring Data Redis 的自动化配置 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,6 +43,10 @@
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
             <version>3.16.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
         </dependency>
     </dependencies>
 
