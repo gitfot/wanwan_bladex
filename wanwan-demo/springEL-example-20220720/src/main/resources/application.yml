@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+
+# MyBatis SQL打印(方法接口所在的包，不是Mapper.xml所在的包)
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#mybatis:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com.fun.test: debug
+
+---
+
+
+
